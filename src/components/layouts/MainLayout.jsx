@@ -2,7 +2,7 @@ import { children } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 
-const MainLayout =() =>{
+const MainLayout =({children}) =>{
     return (
         <>
            <section>
