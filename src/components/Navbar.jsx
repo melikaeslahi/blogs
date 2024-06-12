@@ -14,6 +14,7 @@ const Navbar =()=>{
                      <li className="text-white p-2 text-xs "><Link to={'/blogs'}>Blogs</Link></li>
                      <li className="text-white p-2 text-xs "><Link to={'/authors'}>Authors</Link></li>
                      <li className="text-white p-2 text-xs "><Link to={'/categories'}>Categories</Link></li>    
+                     <li className="text-white p-2 text-xs "><Link to={'/posts'}>Posts</Link></li>    
                    </ul>    
                 </nav> 
                 <section className="mr-10 w-2/6 hidden lg:flex md:hidden xl:flex justify-end">

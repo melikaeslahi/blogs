@@ -11,6 +11,11 @@ import MainLayout from "../components/layouts/MainLayout";
 import NotFound from "../components/NotFound";
 import EditAuthor from "../pages/Author/EditAuthor";
 import App from "../App";
+import Posts from "../pages/Post/Posts";
+import CreatePost from "../pages/Post/CreatePost";
+import EditPost from "../pages/Post/EditPost";
+
+
 
 
 export const router =  createBrowserRouter([
@@ -50,5 +55,17 @@ export const router =  createBrowserRouter([
     {
         path : "categories/edit/:categoryId",
         element :<MainLayout><EditCategory /></MainLayout>
+    },
+    {
+        path : "posts",
+        element : <MainLayout><Posts /></MainLayout>
+    },
+    {
+        path : "posts/create",
+        element : <MainLayout><CreatePost /></MainLayout>
+    },
+    {
+        path : "posts/edit/:categoryId",
+        element :<MainLayout><EditPost /></MainLayout>
     },
 ])
