@@ -6,7 +6,7 @@ const Footer =()=>{
     return(<>
            <section className="flex flex-col justify-center items-start w-full">
                  <section className="flex justify-center w-full mt-5">
-                    <section className="flex  flex-col justify-center items-center w-5/6 h-48 rounded-xl bg-blue-500">
+                    <section className="flex  flex-col justify-center items-center w-full md:w-5/6 xl:w-5/6 lg:w-5/6 h-48 rounded-xl bg-blue-500 m-2">
                         <p className="text-white text-xl py-2">get notified about our blogs published</p>
 
                         <section className="flex  bg-white h-10 rounded-sm mt-5">
@@ -17,12 +17,12 @@ const Footer =()=>{
                  </section>
 
                  <footer className="flex flex-col justify-start items-start w-full">
-                  <section className="flex justify-center items-center w-full p-5 mt-5 ">
-                    <section className="flex justify-between items-start w-5/6">
+                  <section className="flex  justify-center items-center w-full p-5 mt-5 ">
+                    <section className="flex flex-col items-center lg:flex-row xl:flex-row   justify-between lg:items-start xl:items-start w-5/6">
                         <section className="flex justify-center items-start">
                            <h1 className="font-extrabold text-2xl ">BLOGI</h1>
                         </section>
-                        <section className="flex flex-col justify-start items-start">
+                        <section className="flex flex-col justify-start items-start mt-5">
                             <h2 className="text-sm text-gray-600">Important link</h2>
                            <ul>
                              <li><Link className="text-xs text-gray-500" to={'/'}>Home</Link></li> 
@@ -32,7 +32,7 @@ const Footer =()=>{
 
                            </ul>
                         </section>
-                        <section className="flex flex-col justify-start items-start">
+                        <section className="flex flex-col justify-start items-start mt-5">
                             <h2 className="text-sm text-gray-600">Support</h2>
                            <ul>
                              <li><Link className="text-xs text-gray-500" to={'#'}>Contact</Link></li> 
@@ -42,7 +42,7 @@ const Footer =()=>{
 
                            </ul>
                         </section>
-                        <section className="flex flex-col justify-start items-start">
+                        <section className="flex flex-col justify-start items-start mt-5">
                             <h2 className="text-sm text-gray-600">Legal</h2>
                            <ul>
                              <li><Link className="text-xs text-gray-500" to={'#'}>Terms of Use</Link></li> 

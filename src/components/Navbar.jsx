@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 
 const Navbar =()=>{
     return(<>
-              <section className="flex justify-around items-center w-full p-3">
+              <section className="flex justify-between lg:justify-around xl:justify-around items-center w-full p-3">
                 <section className="w-1/6">
-                    <h1 className="text-white font-extrabold text-2xl ml-10 p-2">BLOGI</h1>
+                    <h1 className="text-white font-extrabold text-2xl ml-2 md:ml-2 xl:ml-10 lg:ml-10 p-2">BLOGI</h1>
                 </section>
                 <nav className="justify-center w-full hidden lg:flex xl:flex md:hidden">
                    <ul className="flex w-full justify-center ml-32">
