@@ -65,7 +65,7 @@ export const router =  createBrowserRouter([
         element : <MainLayout><CreatePost /></MainLayout>
     },
     {
-        path : "posts/edit/:categoryId",
+        path : "posts/edit/:postId",
         element :<MainLayout><EditPost /></MainLayout>
     },
 ])
