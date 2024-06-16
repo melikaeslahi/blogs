@@ -13,7 +13,8 @@ export const store = configureStore({
 
     },
     middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(postsApi.middleware , categoryApi,middleware , authorApi.middleware),
-    
-
+    getDefaultMiddleware()
+    .concat(postsApi.middleware ,
+           categoryApi.middleware ,
+          authorApi.middleware),
 })

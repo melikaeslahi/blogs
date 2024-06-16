@@ -11,7 +11,7 @@ const CreateCategory = ()=>{
             <Input type={'text'} title={'createTime'} name={'create_at'} placeholder={'2024'} />
             <Input type={'textarea'} title={'Article'} name={'article'} placeholder={'your text ...'} />
             <Input type={'text'} title={'author name'} name={'author_id'} placeholder={'select your name'} />
-            <Input type={'text'} title={'category'} name={'category_id'} placeholder={'select your category'} />
+            <Input type={'select'} title={'category'} name={'category_id'} placeholder={'select your category'} />
          </InputContainer>
        </CreatePageLayout>
     </>);

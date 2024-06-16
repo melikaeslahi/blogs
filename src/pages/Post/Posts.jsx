@@ -7,9 +7,50 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {   faTrash } from "@fortawesome/free-solid-svg-icons";
 import TableEditRecord from "../../components/Table/TableEditRecord";
 import { Link } from "react-router-dom";
+import { useGetPostsQuery } from "../../api/postApi";
+import { data } from "autoprefixer";
 
 
 const Categories = () =>{
+
+   const {data:posts=[] , isSuccess , isError , isLoading ,error } = useGetPostsQuery();
+ 
+   let content;
+   let contentNotFound;
+    
+    
+   if (isLoading){
+      content = <p>data is loading</p>
+   }else if(isSuccess && posts.length > 0){
+     content =
+     
+     (posts.map((post,index)=>(
+      <TableRow key={index}>
+      <TableCell>{post?.id}</TableCell>
+      <TableCell>   {post?.title}  </TableCell>
+      <TableCell>  {post?.author} </TableCell>  
+      <TableCell>  {post?.category_id} </TableCell>
+      <TableCell> {post?.created_at}  </TableCell>
+      <TableCell>   {post?.article}  </TableCell>  
+      <TableCell>
+           <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
+           <TableEditRecord id={1} />
+      </TableCell>              
+    </TableRow>
+     )) 
+    )
+
+   }else if(posts.length === 0){
+       contentNotFound =   
+                    <p className="text-center">
+                       Content Not Found 
+                    </p>
+                  
+   }else if(isError){
+    content = `error is ${error}`;
+   }
+
+
     return (<>
         <PanelLayout title={'Posts'} link={'posts'}>
           <Table >
@@ -25,59 +66,10 @@ const Categories = () =>{
                  </TableRow>
             </thead>
             <tbody>
-                <TableRow>
-                 <TableCell>1</TableCell>
-                 <TableCell>  About React js  </TableCell>
-                 <TableCell> melika </TableCell>  
-                 <TableCell>programing</TableCell>
-                 <TableCell> 2024 </TableCell>
-                 <TableCell>  Article  </TableCell>  
-                 <TableCell>
-                      <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                      <TableEditRecord id={1} />
-                 </TableCell>              
-               </TableRow>
-                 
-               <TableRow>
-                 <TableCell>1</TableCell>
-                 <TableCell>  About React js  </TableCell>
-                 <TableCell> melika </TableCell>  
-                 <TableCell>programing</TableCell>
-                 <TableCell> 2024 </TableCell>
-                 <TableCell>  Article  </TableCell>     
-                 <TableCell>
-                      <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                      <TableEditRecord id={1} />
-                 </TableCell>         
-               </TableRow>
-        
-               <TableRow>
-                 <TableCell>1</TableCell>
-                 <TableCell>  About React js  </TableCell>
-                 <TableCell> melika </TableCell>  
-                 <TableCell>programing</TableCell>
-                 <TableCell> 2024 </TableCell>
-                 <TableCell>  Article  </TableCell>  
-                 <TableCell>
-                      <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                      <TableEditRecord id={1} />
-                 </TableCell>
-               </TableRow>
-        
-               <TableRow>
-                 <TableCell>1</TableCell>
-                 <TableCell>  About React js  </TableCell>
-                 <TableCell> melika </TableCell>  
-                 <TableCell>programing</TableCell>
-                 <TableCell> 2024 </TableCell>
-                 <TableCell>  Article  </TableCell>
-                 <TableCell>
-                      <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                      <TableEditRecord id={1} />
-                 </TableCell> 
-               </TableRow>
-            </tbody>
+             {content}
+             </tbody>
            </Table>
+           {contentNotFound}
         </PanelLayout>
     </>);
 }

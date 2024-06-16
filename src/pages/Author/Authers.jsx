@@ -7,8 +7,41 @@ import PanelLayout from "../../components/layouts/PanelLayout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import TableEditRecord from "../../components/Table/TableEditRecord";
+import {useGetAuthorsQuery } from "../../api/authorApi";
 
 const Authors = () =>{
+
+  const {data:authors = [] , isSuccess , isLoading , isError , error} =  useGetAuthorsQuery();
+
+  let tableContent;
+  let message;
+
+  if (isLoading) {
+    message = <p>data is loading</p>
+  }else if (isSuccess) {
+    if(authors.length > 0){
+      tableContent = (authors.map((author , index)=>(
+        <TableRow key={index}>
+        <TableCell>{author.id}</TableCell>
+        <TableCell>{author.name}</TableCell>
+        <TableCell>{author.image}</TableCell>
+        <TableCell> {author.biography}</TableCell>
+        <TableCell>
+            <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
+            <TableEditRecord id={1} />
+        </TableCell>
+      </TableRow>
+      )));
+     
+    } else{
+      message = <p>Content Not Found</p>
+    }
+    
+    
+  }else if(isError){
+     message = <p>error is {error.error} </p>
+    
+  }
     return (<>
         <PanelLayout title={'Authors'} link={'authors'}>
           <Table >
@@ -22,51 +55,10 @@ const Authors = () =>{
                  </TableRow>
             </thead>
             <tbody>
-                <TableRow>
-                 <TableCell>1</TableCell>
-                 <TableCell>melika</TableCell>
-                 <TableCell>image1</TableCell>
-                 <TableCell> aha is a product disgner ....</TableCell>
-                 <TableCell>
-                     <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                     <TableEditRecord id={1} />
-                 </TableCell>
-               </TableRow>
-                 
-               <TableRow>
-                 <TableCell>2</TableCell>
-                 <TableCell>melika</TableCell>
-                 <TableCell>image1</TableCell>
-                 <TableCell> aha is a product disgner ....</TableCell>
-                 <TableCell>
-                      <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                      <TableEditRecord id={1} />
-                 </TableCell>
-               </TableRow>
-        
-               <TableRow>
-                 <TableCell>3</TableCell>
-                 <TableCell>melika</TableCell>
-                 <TableCell>image1</TableCell>
-                 <TableCell> aha is a product disgner ....</TableCell>
-                 <TableCell>
-                      <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                      <TableEditRecord id={1} />
-                 </TableCell>
-               </TableRow>
-        
-               <TableRow>
-                 <TableCell>4</TableCell>
-                 <TableCell>melika</TableCell>
-                 <TableCell>image1</TableCell>
-                 <TableCell> aha is a product disgner ....</TableCell>
-                 <TableCell>
-                      <Link to={`/`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-                      <TableEditRecord id={1} />
-                 </TableCell>
-               </TableRow>
+            {tableContent}       
             </tbody>
            </Table>
+           {message}
         </PanelLayout>
     </>);
 }
