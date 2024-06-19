@@ -41,7 +41,7 @@ export const router =  createBrowserRouter([
         element : <MainLayout> <CreateAuther /></MainLayout>
     },
     {
-        path : "authors/edit/:autherId",
+        path : "authors/edit/:authorId",
         element :<MainLayout> <EditAuthor /></MainLayout>
     },
     {

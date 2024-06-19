@@ -27,19 +27,19 @@ export const categoryApi = createApi({
         invalidatesTags:['Category']
        }),
        editCategory:builder.mutation({
-        query:(post)=>({
-            url:`categories/${post.id}`,
+        query:({values , categoryId })=>({
+            url:`categories/${categoryId}`,
             method:'PUT',
-            body:post,
+            body:values,
 
         }),
         invalidatesTags:['Category']
        }),
        deleteCategory:builder.mutation({
-        query:(post)=>({
-            url:`categories/${post.id}`,
+        query:(categoryId)=>({
+            url:`categories/${categoryId}`,
             method:'DELETE',
-            body:post,
+            
 
         }),
         invalidatesTags:['Category']

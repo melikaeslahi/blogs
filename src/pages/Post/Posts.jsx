@@ -7,14 +7,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {   faTrash } from "@fortawesome/free-solid-svg-icons";
 import TableEditRecord from "../../components/Table/TableEditRecord";
 import { Link } from "react-router-dom";
-import { useGetPostsQuery } from "../../api/postApi";
+import { useDeletePostMutation, useGetPostsQuery } from "../../api/postApi";
 import { data } from "autoprefixer";
+import ShowTime from "../../components/ShowTime";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { setIsModal } from "../../slice/utilSlice";
 
 
-const Categories = () =>{
+const  Posts = () =>{
 
    const {data:posts=[] , isSuccess , isError , isLoading ,error } = useGetPostsQuery();
- 
+   const dispatch = useDispatch();
+   const [deleteId , setDeleteId] = useState(null);
+   const [deletePost] = useDeletePostMutation();
+
+   const handlerOpenModal = (id)=>{
+      dispatch(setIsModal(true));
+      setDeleteId(id);
+   }
+
    let content;
    let contentNotFound;
     
@@ -26,15 +38,17 @@ const Categories = () =>{
      
      (posts.map((post,index)=>(
       <TableRow key={index}>
-      <TableCell>{post?.id}</TableCell>
-      <TableCell>   {post?.title}  </TableCell>
-      <TableCell>  {post?.author} </TableCell>  
-      <TableCell>  {post?.category_id} </TableCell>
-      <TableCell> {post?.created_at}  </TableCell>
-      <TableCell>   {post?.article}  </TableCell>  
+      <TableCell>{index + 1}</TableCell>
+      <TableCell>{post?.title}</TableCell>
+      <TableCell>{post?.author_id}</TableCell>  
+      <TableCell>{post?.category_id}</TableCell>
+      <TableCell> <ShowTime timestamp={post?.created_at} /> </TableCell>
+      <TableCell>{post?.text.slice(0 , 10)} ...</TableCell>  
       <TableCell>
-           <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-           <TableEditRecord id={1} />
+           <button onClick={()=>handlerOpenModal(post?.id)}
+            className="p-2 text-xs bg-red-600 text-white">
+                <FontAwesomeIcon icon={faTrash} /> </button>
+           <TableEditRecord id={post?.id} />
       </TableCell>              
     </TableRow>
      )) 
@@ -52,7 +66,7 @@ const Categories = () =>{
 
 
     return (<>
-        <PanelLayout title={'Posts'} link={'posts'}>
+        <PanelLayout onDelete={()=>deletePost(deleteId)} title={'Posts'} link={'posts'}>
           <Table >
             <thead>
                 <TableRow>
@@ -73,4 +87,4 @@ const Categories = () =>{
         </PanelLayout>
     </>);
 }
-export default Categories;
+export default Posts;

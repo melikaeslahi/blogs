@@ -17,29 +17,30 @@ export const authorApi = createApi({
         query: (blogId)=>`/authors/${blogId}`,
         providesTags:['Author'],
        }),
-       addCategory: builder.mutation({
-        query:(initialPost)=>({
-            url:'authors/',
+       addAuthor: builder.mutation({
+        query:(formData)=>({
+            url:'authors',
             method: 'POST',
-            body:initialPost,
+            body:formData,
 
         }),
         invalidatesTags:['Author']
        }),
        editAuthor:builder.mutation({
-        query:(post)=>({
-            url:`authors/${post.id}`,
+        query:({values , authorId})=>({
+            url:`authors/${authorId}`,
             method:'PUT',
-            body:post,
+            body:values,
 
         }),
         invalidatesTags:['Author']
        }),
        deleteAuthor:builder.mutation({
-        query:(post)=>({
-            url:`authors/${post.id}`,
+        query:(authorId)=>({
+           
+            url:`authors/${authorId}`,
             method:'DELETE',
-            body:post,
+           
 
         }),
         invalidatesTags:['Author']

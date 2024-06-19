@@ -1,8 +1,7 @@
-import { text } from '@fortawesome/fontawesome-svg-core';
 import *  as Yup from 'yup';
 
 
-export const categoryScheme = Yup.object({
-    title:Yup.string().required(),
+export const categorySchema = Yup.object({
+    name:Yup.string().required(),
     description: Yup.string().required(), 
 })

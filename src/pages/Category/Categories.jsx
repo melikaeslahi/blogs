@@ -7,24 +7,38 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import TableEditRecord from "../../components/Table/TableEditRecord";
 import { Link } from "react-router-dom";
-import { useGetCategoriesQuery } from "../../api/categoryApi";
+import { useDeleteCategoryMutation, useGetCategoriesQuery } from "../../api/categoryApi";
+import { useDispatch } from "react-redux";
+import { setIsModal } from "../../slice/utilSlice";
+import { useState } from "react";
 const Categories = () =>{
     const {data:categories = [] ,isSuccess , isError , isLoading , error} = useGetCategoriesQuery();
-     
+    const dispatch = useDispatch(); 
+    const [deleteId , setDeleteId] =  useState(null);
+    const [deleteCategory] = useDeleteCategoryMutation();
     let tableContent;
     let  message ;
+
+    const handlerOpenModal =(id)=>{
+        dispatch(setIsModal(true));
+        setDeleteId(id);
+    }
+
      
     if(isLoading){
        message = <p>data is loading</p>
     }else if(isSuccess && categories.length > 0){
        tableContent = (categories.map((category , index)=>(
         <TableRow key={index}>
-        <TableCell>1</TableCell>
-        <TableCell>programing</TableCell>
-        <TableCell> programing description </TableCell>
+        <TableCell>{index + 1}</TableCell>
+        <TableCell>{category.name}</TableCell>
+        <TableCell>  {category.description} </TableCell>
         <TableCell>
-            <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-            <TableEditRecord   />
+            <button  onClick={()=>handlerOpenModal(category.id)} 
+            className="p-2 text-xs bg-red-600 text-white"> 
+            <FontAwesomeIcon icon={faTrash} /> 
+            </button>
+            <TableEditRecord  id={category.id} />
         </TableCell>                  
       </TableRow>
        )))
@@ -36,7 +50,7 @@ const Categories = () =>{
     }
 
     return (<>
-        <PanelLayout title={'Categories'} link={'categories'}>
+        <PanelLayout onDelete={()=>deleteCategory(deleteId)} title={'Categories'} link={'categories'}>
           <Table >
             <thead>
                 <TableRow>

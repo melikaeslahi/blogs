@@ -28,19 +28,19 @@ export const postsApi = createApi({
         invalidatesTags:['Posts']
        }),
        editPost:builder.mutation({
-        query:(post)=>({
-            url:`posts/${post.id}`,
+        query:({values , postId})=>({
+            url:`posts/${postId}`,
             method:'PUT',
-            body:post,
+            body: values,
 
         }),
         invalidatesTags:['Posts']
        }),
        deletePost:builder.mutation({
-        query:(post)=>({
-            url:`posts/${post.id}`,
+        query:(postId)=>({
+            url:`posts/${postId}`,
             method:'DELETE',
-            body:post,
+           
 
         }),
         invalidatesTags:['Posts']

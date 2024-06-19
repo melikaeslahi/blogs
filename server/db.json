@@ -1,5 +1,28 @@
 {
-    "posts":[],
-    "authors":[],
-    "categories":[]
+  "posts": [
+    {
+      "id": "6881",
+      "title": "programing",
+      "image": "image1.jpg",
+      "created_at": "2024-06-19T21:02:01.262Z",
+      "text": " Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.\n\n             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.\n\n             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odi ",
+      "author_id": "hanane",
+      "category_id": "football"
+    }
+  ],
+  "authors": [
+    {
+      "id": "P7VqDNQ4L1DuCHYFI_PQL",
+      "name": "hanane",
+      "image": "image1.jpg",
+      "bio": "development"
+    }
+  ],
+  "categories": [
+    {
+      "id": "6ynQCFAMpwtV_nd5NwY5A",
+      "name": "football",
+      "description": "football is awsome"
+    }
+  ]
 }

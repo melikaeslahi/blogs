@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const TableEditRecord =({id}) =>{
     return(
         <>
-          <Link to={`edit/${1}`} className="p-2 text-xs bg-green-400 text-white"> <FontAwesomeIcon icon={faEdit} /> </Link>
+          <Link to={`edit/${id}`} className="p-2 text-xs bg-green-400 text-white"> <FontAwesomeIcon icon={faEdit} /> </Link>
 
         </>
     );

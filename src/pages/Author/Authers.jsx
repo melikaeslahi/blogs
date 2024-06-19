@@ -7,14 +7,27 @@ import PanelLayout from "../../components/layouts/PanelLayout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTrash} from "@fortawesome/free-solid-svg-icons";
 import TableEditRecord from "../../components/Table/TableEditRecord";
-import {useGetAuthorsQuery } from "../../api/authorApi";
+import {useDeleteAuthorMutation, useGetAuthorsQuery } from "../../api/authorApi";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setIsModal } from "../../slice/utilSlice";
 
 const Authors = () =>{
 
   const {data:authors = [] , isSuccess , isLoading , isError , error} =  useGetAuthorsQuery();
-
+  const [deleteId , setDeleteId] = useState(null);
+  const [deleteAuthor] = useDeleteAuthorMutation();
+  const dispatch = useDispatch();
   let tableContent;
   let message;
+   
+  
+  const handlerOpenModal = (id)=>{
+      dispatch(setIsModal(true));
+      setDeleteId(id);
+  }
+
+
 
   if (isLoading) {
     message = <p>data is loading</p>
@@ -22,13 +35,13 @@ const Authors = () =>{
     if(authors.length > 0){
       tableContent = (authors.map((author , index)=>(
         <TableRow key={index}>
-        <TableCell>{author.id}</TableCell>
+        <TableCell>{index + 1}</TableCell>
         <TableCell>{author.name}</TableCell>
         <TableCell>{author.image}</TableCell>
-        <TableCell> {author.biography}</TableCell>
+        <TableCell> {author.bio}</TableCell>
         <TableCell>
-            <Link to={`/edit/${1}`} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </Link>
-            <TableEditRecord id={1} />
+            <button type="button" onClick={()=>handlerOpenModal(author.id)} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </button>
+            <TableEditRecord id={author.id} />
         </TableCell>
       </TableRow>
       )));
@@ -43,7 +56,7 @@ const Authors = () =>{
     
   }
     return (<>
-        <PanelLayout title={'Authors'} link={'authors'}>
+        <PanelLayout onDelete={()=>deleteAuthor(deleteId)} title={'Authors'} link={'authors'}>
           <Table >
             <thead>
                 <TableRow>
