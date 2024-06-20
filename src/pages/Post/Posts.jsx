@@ -13,6 +13,8 @@ import ShowTime from "../../components/ShowTime";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { setIsModal } from "../../slice/utilSlice";
+import ShowAuthor from "../../components/ShowAuthor";
+import ShowCategory from "../../components/ShowCategory";
 
 
 const  Posts = () =>{
@@ -40,8 +42,10 @@ const  Posts = () =>{
       <TableRow key={index}>
       <TableCell>{index + 1}</TableCell>
       <TableCell>{post?.title}</TableCell>
-      <TableCell>{post?.author_id}</TableCell>  
-      <TableCell>{post?.category_id}</TableCell>
+      <TableCell><img src={`http://localhost:9000/post/${post?.image}`} className="rounded-md" alt={`${post?.title}`} width={50} height={50} /> </TableCell>
+
+      <TableCell><ShowAuthor authorId={post?.author_id} /></TableCell>  
+      <TableCell> <ShowCategory categoryId={post?.category_id} /> </TableCell>
       <TableCell> <ShowTime timestamp={post?.created_at} /> </TableCell>
       <TableCell>{post?.text.slice(0 , 10)} ...</TableCell>  
       <TableCell>
@@ -72,6 +76,7 @@ const  Posts = () =>{
                 <TableRow>
                     <TableHeader>#</TableHeader>
                     <TableHeader>Tilte</TableHeader>
+                    <TableHeader>Image</TableHeader>
                     <TableHeader>Author</TableHeader>
                     <TableHeader>Category</TableHeader>
                     <TableHeader>Create Time</TableHeader>

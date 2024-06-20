@@ -37,7 +37,7 @@ const Authors = () =>{
         <TableRow key={index}>
         <TableCell>{index + 1}</TableCell>
         <TableCell>{author.name}</TableCell>
-        <TableCell>{author.image}</TableCell>
+        <TableCell><img src={`http://localhost:9000/author/${author.image}`}  className="rounded-md " alt={author.name} width={50} height={50} /> </TableCell>
         <TableCell> {author.bio}</TableCell>
         <TableCell>
             <button type="button" onClick={()=>handlerOpenModal(author.id)} className="p-2 text-xs bg-red-600 text-white"> <FontAwesomeIcon icon={faTrash} /> </button>

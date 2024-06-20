@@ -13,7 +13,7 @@ const Select = ({name , options ,placeholder , title  })=>{
                   <>     
                         <option
                         key={option.id+index} 
-                        value={option.name}>
+                        value={option.id}>
                         {option.name}
                         </option>  
                   </> 

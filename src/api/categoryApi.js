@@ -14,7 +14,7 @@ export const categoryApi = createApi({
         }
        ),
        getCategory:builder.query({
-        query: (blogId)=>`/categories/${blogId}`,
+        query: (categoryId)=>`/categories/${categoryId}`,
         providesTags:['Category'],
        }),
        addCategory: builder.mutation({

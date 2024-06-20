@@ -14,7 +14,7 @@ export const authorApi = createApi({
         }
        ),
        getAuthor:builder.query({
-        query: (blogId)=>`/authors/${blogId}`,
+        query: (authorId)=>`/authors/${authorId}`,
         providesTags:['Author'],
        }),
        addAuthor: builder.mutation({
