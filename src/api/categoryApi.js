@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const categoryApi = createApi({
     reducerPath:"categoryApi",
     tagTypes:['Category'],
-    baseQuery:fetchBaseQuery({baseUrl:'http://localhost:9000/'}),
+    baseQuery:fetchBaseQuery({baseUrl:'https://app-store-api.vercel.app'}),
     endpoints:(builder)=>({
        getCategories: builder.query(
         {

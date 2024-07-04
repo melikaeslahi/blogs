@@ -42,7 +42,7 @@ const  Posts = () =>{
       <TableRow key={index}>
       <TableCell>{index + 1}</TableCell>
       <TableCell>{post?.title}</TableCell>
-      <TableCell><img src={`http://localhost:9000/post/${post?.image}`} className="rounded-md" alt={`${post?.title}`} width={50} height={50} /> </TableCell>
+      <TableCell><img src={`https://app-store-api.vercel.app/post/${post?.image}`} className="rounded-md" alt={`${post?.title}`} width={50} height={50} /> </TableCell>
 
       <TableCell><ShowAuthor authorId={post?.author_id} /></TableCell>  
       <TableCell> <ShowCategory categoryId={post?.category_id} /> </TableCell>

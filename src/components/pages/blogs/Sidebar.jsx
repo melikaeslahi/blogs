@@ -14,7 +14,7 @@ const Sidebar =({recentlyPosts})=>{
 
           <section key={index} className="flex justify-start items-center w-full mt-3 p-3   border-b-2 border-gray-200 ">
            <section>
-             <img src={`http://localhost:9000/post/${recentlyPost?.image}`}
+             <img src={`https://app-store-api.vercel.app/post/${recentlyPost?.image}`}
           className='w-12 h-12 rounded-sm'
           alt="recent post" />
           </section>

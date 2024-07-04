@@ -11,7 +11,7 @@ const Sidebar =({authorId})=>{
                  <section className='flex flex-col justify-start items-start w-full p-4 shadow-[0px_0px_5px_0px_rgba(179,179,179,1)] rounded-lg'>
                     <h3 className='text-lg font-bold p-2 '>About The Author</h3>
                     <section className='rounded-lg flex justify-center w-full'>
-                    <img src={`http://localhost:9000/author/${author?.image}`} alt="author photo" 
+                    <img src={`https://app-store-api.vercel.app/author/${author?.image}`} alt="author photo" 
                     className='w-full md:10/12 lg:w-52 xl:w-52 h-52 rounded-lg'
                     />
                     </section>

@@ -8,7 +8,7 @@ const Cart =({width ,post})=>{
         <Link to={`/blogs/${post?.id}`}>
                 <section className={`flex flex-col justify-start lg:justify-start items-center ${width} mt-5 rounded-lg p-3 hover:border hover:border-gray-300`}>
                   <section className='w-full'>
-                    <img src={`http://localhost:9000/post/${post?.image}`} 
+                    <img src={`https://app-store-api.vercel.app/post/${post?.image}`} 
                          className='rounded-lg w-full h-40'
                          alt="image for blog" />
                   </section>

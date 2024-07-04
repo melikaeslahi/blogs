@@ -42,7 +42,7 @@ const Aritcle =({blog})=>{
 
           <section className='mt-5 w-full flex justify-center rounded-lg'> 
               <img 
-              src={`http://localhost:9000/post/${blog?.image}`}
+              src={`https://app-store-api.vercel.app/post/${blog?.image}`}
                alt="image blog"
                className='w-full md:10/12 lg:w-10/12 xl:w-10/12 h-72 rounded-lg' 
                />

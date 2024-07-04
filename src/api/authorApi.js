@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const authorApi = createApi({
     reducerPath:"authorApi",
     tagTypes:['Author'],
-    baseQuery:fetchBaseQuery({baseUrl:'http://localhost:9000/'}),
+    baseQuery:fetchBaseQuery({baseUrl:'https://app-store-api.vercel.app'}),
     endpoints:(builder)=>({
        getAuthors: builder.query(
         {
