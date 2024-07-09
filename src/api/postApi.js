@@ -22,7 +22,10 @@ export const postsApi = createApi({
         query:(initialPost)=>({
             url:'posts/',
             method: 'POST',
-            body:initialPost,
+            body:JSON.stringify(initialPost),
+            headers:{
+                'Content-Type': 'application/json'
+            }
 
         }),
         invalidatesTags:['Posts']
@@ -31,8 +34,11 @@ export const postsApi = createApi({
         query:({values , postId})=>({
             url:`posts/${postId}`,
             method:'PUT',
-            body: values,
-
+             
+            body:JSON.stringify(values),
+            headers:{
+                'Content-Type': 'application/json'
+            }
         }),
         invalidatesTags:['Posts']
        }),

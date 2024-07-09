@@ -37,7 +37,7 @@ const EditPost = () =>{
 
     const handlerSubmit = async(values)=>{
         try {
-            await editPost({values: JSON.stringify(values) , postId}).unwrap();
+            await editPost({values , postId}).unwrap();
         } catch (error) {
             console.log(error)
         }
@@ -46,7 +46,8 @@ const EditPost = () =>{
     return (<>
     {loading ? <p>data is loading</p> : success ? 
       <CreatePageLayout title={'Edit  Post'} link={'posts'} >
-      <FormContainer btnName={'Edit Post'} btnDisabled={isLoading?true : false } validate={postSchema} initialValues={initialValues} onSubmit={handlerSubmit} >
+      <FormContainer btnName={'Edit Post'} btnDisabled={isLoading?true : false } 
+      validate={postSchema} initialValues={initialValues} handlerSubmit={handlerSubmit} >
          <Input type={'text'} title={'Title'} name={'title'} placeholder={'programing'} />
          <Input type={'text'} title={'image'} name={'image'} placeholder={'post image'} />
          <Input type={'text'} title={'createTime'} name={'created_at'} placeholder={'2024'} />

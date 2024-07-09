@@ -25,7 +25,7 @@ const EditCategory = () =>{
 
    const handlerSubmit = async (values)=>{
       try {
-         await editCategory({values:JSON.stringify(values) , categoryId} ).unwrap();
+         await editCategory({values , categoryId} ).unwrap();
       } catch (error) {
          console.log(error)
       }
@@ -34,7 +34,11 @@ const EditCategory = () =>{
     return (<>
       {loading ? <p>data is loading</p> : success ? 
       <CreatePageLayout title={'Edit Category'} link={'categories'} >
-       <FormContainer btnName={'Edit Author'} btnDisabled={isLoading? true : false} initialValues={initialValues} validate={categorySchema}  onSubmit={handlerSubmit} >
+       <FormContainer btnName={'Edit Author'}
+        btnDisabled={isLoading? true : false} 
+        initialValues={initialValues}
+         validate={categorySchema}  
+         handlerSubmit={handlerSubmit} >
           <Input type={'text'} title={'Name'} name={'name'} placeholder={'Programing'} />
           <Input type={'text'} title={'description'} name={'description'} placeholder={'programing is awsome.'} />
        </FormContainer>

@@ -34,7 +34,7 @@ const CreatePost = ()=>{
 
     const handlerSubmit =  async (values)=>{
       try {
-         await addPost(JSON.stringify(values)).unwrap();
+         await addPost(values).unwrap();
       } catch (error) {
          console.log(error)
       }
@@ -42,7 +42,7 @@ const CreatePost = ()=>{
 
     return (<>
     <CreatePageLayout title={'Create Post'} link={'posts'} >
-         <FormContainer btnName={'Create Post'} btnDisabled={isLoading ? true : false} validate={postSchema} initialValues={initialValues} onSubmit={handlerSubmit}>
+         <FormContainer btnName={'Create Post'} btnDisabled={isLoading ? true : false} validate={postSchema} initialValues={initialValues} handlerSubmit={handlerSubmit}>
             <Input type={'text'} title={'Title'} name={'title'} placeholder={'programing'} />
             <Input type={'text'} title={'image'} name={'image'} placeholder={'post image'} />
             <Input type={'text'} title={'createTime'} name={'created_at'} placeholder={'2024'} />

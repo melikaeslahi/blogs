@@ -12,8 +12,8 @@ const CreateAuther  =()=>{
   const [addAuthor , {isLoading , isSuccess  }] = useAddAuthorMutation();
 
     const initialValues = {
+       name:``,
       id:nanoid(),
-      name:``,
       image:``,
       bio:``
     }
@@ -26,8 +26,8 @@ const CreateAuther  =()=>{
     },[isSuccess])
 
    const  handlerSubmit = async (values)=>{
-      try {
-            const data=  await addAuthor(JSON.stringify(values)).unwrap();         
+      try {      
+         await addAuthor(values);  
       } catch (error) {
          console.log(error)
       }   
@@ -35,7 +35,7 @@ const CreateAuther  =()=>{
 
     return(<>
        <CreatePageLayout title={'Create Author'} link={'authors'} >
-         <FormContainer btnName={'Create Author'} btnDisabled={isLoading ? true : false }  validate={authorSchema} initialValues={initialValues} onSubmit={handlerSubmit} >
+         <FormContainer btnName={'Create Author'} btnDisabled={isLoading ? true : false }  validate={authorSchema} initialValues={initialValues} handlerSubmit={handlerSubmit} >
             <Input type={'text'} title={'Name'} name={'name'} placeholder={'Melika'} />
             <Input type={'text'} title={'image'} name={'image'} placeholder={'Author Photo'} />
             <Input type={'text'} title={'Biography'} name={'bio'} placeholder={'write here somthing about your..'} />

@@ -4,12 +4,16 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const authorApi = createApi({
     reducerPath:"authorApi",
     tagTypes:['Author'],
-    baseQuery:fetchBaseQuery({baseUrl:'https://app-store-api.vercel.app'}),
+    baseQuery:fetchBaseQuery({baseUrl:'https://app-store-api.vercel.app',
+    
+}),
+    
     endpoints:(builder)=>({
        getAuthors: builder.query(
         {
          query: ()=> '/authors',
          providesTags:['Author'],
+         
 
         }
        ),
@@ -19,9 +23,13 @@ export const authorApi = createApi({
        }),
        addAuthor: builder.mutation({
         query:(formData)=>({
-            url:'authors',
+            url:'/authors',
             method: 'POST',
-            body:formData,
+            body:JSON.stringify(formData),
+            headers:{ 
+                'Content-Type': 'application/json',
+              
+            }
 
         }),
         invalidatesTags:['Author']
@@ -29,9 +37,11 @@ export const authorApi = createApi({
        editAuthor:builder.mutation({
         query:({values , authorId})=>({
             url:`authors/${authorId}`,
-            method:'PUT',
-            body:values,
-
+            method:'PUT',      
+            body:JSON.stringify(values),
+            headers:{
+                'Content-Type': 'application/json'
+            }
         }),
         invalidatesTags:['Author']
        }),

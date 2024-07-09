@@ -24,7 +24,7 @@ const CreateCategory = () =>{
 
     const handlerSubmit = async (values)=>{
        try {
-       const data = await addCategory(JSON.stringify(values)).unwrap();
+       const data = await addCategory(values);
        } catch (error) {
          console.log(error)
        }
@@ -33,7 +33,7 @@ const CreateCategory = () =>{
 
     return (<>
      <CreatePageLayout title={'Create Category'} link={'categories'} >
-         <FormContainer btnName={'Create Author'} btnDisabled={isLoading ? true : false} validate={categorySchema} initialValues={initialValues} onSubmit={handlerSubmit}>
+         <FormContainer btnName={'Create Author'} btnDisabled={isLoading ? true : false} validate={categorySchema} initialValues={initialValues} handlerSubmit={handlerSubmit}>
             <Input type={'text'} title={'Name'} name={'name'} placeholder={'Programing'} />
             <Input type={'text'} title={'description'} name={'description'} placeholder={'programing is awsome.'} />
          </FormContainer>

@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { json } from 'react-router-dom';
 
 
 export const categoryApi = createApi({
@@ -18,10 +19,14 @@ export const categoryApi = createApi({
         providesTags:['Category'],
        }),
        addCategory: builder.mutation({
-        query:(initialPost)=>({
-            url:'categories/',
+        query:(formData)=>({
+            url:'categories',
             method: 'POST',
-            body:initialPost,
+            body:JSON.stringify(formData),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+
 
         }),
         invalidatesTags:['Category']
@@ -30,7 +35,10 @@ export const categoryApi = createApi({
         query:({values , categoryId })=>({
             url:`categories/${categoryId}`,
             method:'PUT',
-            body:values,
+            body: JSON.stringify(values),
+            headers:{
+                'Content-Type': 'application/json'
+            }
 
         }),
         invalidatesTags:['Category']

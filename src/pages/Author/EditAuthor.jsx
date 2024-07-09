@@ -28,7 +28,7 @@ const EditAuthor = () =>{
 
     const handlerSubmit = async (values)=>{
       try {
-          await editAuthor({ values:JSON.stringify(values) , authorId});
+          await editAuthor({ values , authorId});
       } catch (error) {
          console.log(error);
       }
@@ -36,7 +36,7 @@ const EditAuthor = () =>{
     return (<>
 
     {success ? <CreatePageLayout title={'Edit Author'} link={'authors'} >
-         <FormContainer btnName={'Edit Author'} btnDisabled={isLoading ? true : false } onSubmit={handlerSubmit} initialValues={initialValues} validate={authorSchema}  >
+         <FormContainer btnName={'Edit Author'} btnDisabled={isLoading ? true : false } handlerSubmit={handlerSubmit} initialValues={initialValues} validate={authorSchema}  >
             <Input type={'text'} title={'Name'} name={'name'} placeholder={'Melika'} />
             <Input type={'text'} title={'image'} name={'image'} placeholder={'Author Photo'} />
             <Input type={'text'} title={'Biography'} name={'bio'} placeholder={'write here somthing about yourself..'} />
