@@ -62,7 +62,7 @@ cd blogs
 npm install
 npm run dev
 
-...
+```
 
 ## License
 
