@@ -52,6 +52,8 @@ src/
 - 📄 Support for Markdown content in blog posts  
 - 🔔 Notifications and user roles/permissions  
 
+
+
 ## Installation and Setup
 
 ```bash
@@ -60,3 +62,8 @@ cd blogs
 npm install
 npm run dev
 
+...
+
+## License
+
+This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.
